@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="static/style.css"  />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <form class="insert-form" id="insert_form" method="post" action="">
+                <hr>
+                <h1 class="text-center">Configuration</h1>
+                <hr>
+                <div class="input-field">
+                    <table class="table table-bordered" id="table_field_config">
+                        <tr>
+                            <th>Memory</th>
+                        
+                        <td>
+                            <input class="form-control" autocomplete="off" autofocus id="ram" name="ram" 
+                            placeholder="Memory" type="text" required="">
+                        </td>
+                        </tr>
+                        <tr>
+                            <th>Database Name</th>
+                        
+                        <td>
+                            <input class="form-control" autocomplete="off" autofocus name="db_name" 
+                            placeholder="Database" type="text" required="">
+                        </td>
+                        </tr>
+                        <tr>
+                            <th>Delimiter Type</th>
+                        
+                        <td>
+                            <input class="form-control" autocomplete="off" autofocus name="sep" 
+                            placeholder="Delimiter" type="text" required="">
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                <h3 class="gray-color">Choose additional configuration!</h3>
+                <div class="section">
+                    <section class="app">
+                        <i class="fa fa-rocket"></i>
+                        <article class="feature1">
+                            <input type="checkbox" id="skip_duplicate_nodes" name="skip_duplicate_nodes"/>
+                            <div>
+                                <span>
+                                    skip duplicate nodes
+                                </span>
+                            </div>
+                        </article>
+    
+                        <article class="feature2">
+                            <input type="checkbox" id="skip_bad_relationships" name="skip_bad_relationships"/>
+                            <div>
+                                <span>
+                                    skip bad Relationships
+                                </span>
+                            </div>
+                        </article>
+    
+                        <article class="feature3">
+                            <input type="checkbox" id="ignore_empty_strings" name="ignore_empty_strings"/>
+                            <div>
+                                <span>
+                                    ignore empty strings
+                                </span>
+                            </div>
+                        </article>
+    
+                        <article class="feature4">
+                            <input type="checkbox" id="chache_on_heap" name="chache_on_heap" checked/>
+                            <div>
+                                <span>
+                                    Cache on heap
+                                </span>
+                            </div>
+                        </article>
+                        <article class="feature4">
+                            <input type="checkbox" id="high_io" name="high_io" checked/>
+                            <div>
+                                <span>
+                                    High I/O
+                                </span>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+                <div class="gray-color clear">Please read <span class="blue-color">Neo4j</span>-admin import documentation </div>
+                <hr>
+                <h1 class="text-center">Nodes</h1>
+                <hr>
+                <div class="input-field">
+                    <table class="table table-bordered" id="table_field_node">
+                        <tr>
+                            <th>Node Label</th>
+                            <th>Node Data Directory</th>
+                            <th>Node Header Directory</th>
+                            <th>Option</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="node_label[]" 
+                                placeholder="Label" type="text" required="">
+                            </td>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="node_data_dir[]" 
+                                placeholder="Node Directory" type="text" required="">
+                            </td>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="node_header_dir[]" 
+                                placeholder="Node Header Directory" type="text" required="">
+                            </td>
+                            <td>
+                                <input class="btn btn-warning" type="button" name="add_node" id="add_node" value="Add">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <h1 class="text-center">Relationships</h1>
+                <hr>
+                <div class="input-field">
+                    <table class="table table-bordered" id="table_field_rel">
+                        <tr>
+                            <th>Relationship Type</th>
+                            <th>Relationship Data Directory</th>
+                            <th>Relationship Header Directory</th>
+                            <th>Option</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="rel_type[]" 
+                                placeholder="Relationship Type" type="text" >
+                            </td>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="rel_data_dir[]" 
+                                placeholder="Relationship Directory" type="text" >
+                            </td>
+                            <td>
+                                <input class="form-control" autocomplete="off" autofocus name="rel_header_dir[]" 
+                                placeholder="Rel Header Directory" type="text" >
+                            </td>
+                            <td>
+                                <input class="btn btn-warning" type="button" name="add_rel" id="add_rel" value="Add">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <center>
+                    <input class="btn btn-success" type="submit" name="submit" id="submit" value="register">
+                </center>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <script tyoe="text/javascript">
+            $(document).ready(function(){
+                
+                var node = '<tr><td><input class="form-control" autocomplete="off" autofocus name="node_label[]" placeholder="Label" type="text" required=""></td><td><input class="form-control" autocomplete="off" autofocus name="node_data_dir[]" placeholder="Node Directory" type="text" required=""></td><td><input class="form-control" autocomplete="off" autofocus name="node_header_dir[]" placeholder="Header Directory" type="text" required=""></td><td><input class="btn btn-danger" type="button" name="remove_node" id="remove_node" value="Remove"></td></tr>';
+                
+                var rel = '<tr><td><input class="form-control" autocomplete="off" autofocus name="rel_type[]" placeholder="Relationship Type" type="text" required=""></td><td><input class="form-control" autocomplete="off" autofocus name="rel_data_dir[]" placeholder="Relationship Directory" type="text" required=""></td><td><input class="form-control" autocomplete="off" autofocus name="rel_header_dir[]" placeholder="Header Directory" type="text" required=""></td><td><input class="btn btn-danger" type="button" name="remove_rel" id="remove_rel" value="Remove"></td></tr>';
+
+                var x = 1;
+
+                $("#add_node").click(function(){
+                    $("#table_field_node").append(node);
+                });
+                $("#table_field_node").on('click','#remove_node',function(){
+                    $(this).closest('tr').remove();
+                });
+
+                $("#add_rel").click(function(){
+                    $("#table_field_rel").append(rel);
+                });
+                $("#table_field_rel").on('click','#remove_rel',function(){
+                    $(this).closest('tr').remove();
+                });
+            });
+        </script>
+    </body>
+</html>
